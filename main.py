@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from common.router import resolve_routes
+from utils.router import resolve_routes
 
 app = FastAPI()
 resolve_routes(app)

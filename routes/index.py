@@ -1,6 +1,6 @@
 from pydantic import BaseModel
-from common.router import router
-from common.llm import llm
+from utils.router import router
+from utils.llm import llm
 
 
 class IndexReq(BaseModel):

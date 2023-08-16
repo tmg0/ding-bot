@@ -1,5 +1,5 @@
 from langchain.llms import OpenAI
-from common.conf import load_config
+from utils.conf import load_config
 import os
 
 conf = load_config()

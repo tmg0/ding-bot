@@ -1,4 +1,4 @@
-from common.fs import read_yaml
+from utils.fs import read_yaml
 
 
 class BotConfig:
