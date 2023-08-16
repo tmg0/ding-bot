@@ -4,7 +4,6 @@ from utils.router import resolve_routes
 app = FastAPI()
 resolve_routes(app)
 
-
 if __name__ == "__main__":
     import uvicorn
 
