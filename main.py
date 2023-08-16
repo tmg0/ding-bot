@@ -1,13 +1,11 @@
-from common import fse
-from langchain.llms import OpenAI
+from fastapi import FastAPI
+from common.router import resolve_routes
 
-import os
+app = FastAPI()
+resolve_routes(app)
 
-conf = fse.read_yaml(path="./bot.config.yaml")
 
-os.environ["OPENAI_PROXY"] = conf["openai_proxy"]
+if __name__ == "__main__":
+    import uvicorn
 
-llm = OpenAI(openai_api_key=conf["openai_api_key"], temperature=0.9)
-
-text = "What would be a good company name for a company that makes colorful socks?"
-print(llm(text))
+    uvicorn.run("main:app", host="localhost", port=5174, reload=True)
