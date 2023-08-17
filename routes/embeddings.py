@@ -14,6 +14,7 @@ class EmbeddingsReq(BaseModel):
 @router.post("/embeddings")
 async def embeddings(req: EmbeddingsReq):
     texts = text_splitter.split_text(req.input)
-    embedding = embeddings_model
-    Chroma.from_texts(texts, embedding, persist_directory).persist()
-    return len(texts)
+    Chroma.from_texts(
+        texts, embedding=embeddings_model, persist_directory=persist_directory
+    ).persist()
+    return texts
