@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from utils.router import router
-from utils.llm import llm
+from utils.openai import llm
 
 
 class IndexReq(BaseModel):

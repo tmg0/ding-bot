@@ -1,8 +1,7 @@
 from pydantic import BaseModel
-from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import Chroma
 from utils.router import router
-from utils.llm import text_splitter
+from utils.openai import text_splitter, embeddings_model
 
 
 class EmbeddingsReq(BaseModel):
@@ -12,6 +11,6 @@ class EmbeddingsReq(BaseModel):
 @router.post("/embeddings")
 async def index(req: EmbeddingsReq):
     texts = text_splitter.split_text(req.input)
-    embedding = OpenAIEmbeddings()
-    Chroma.from_texts(texts, embedding).persist()
+    embeddings = embeddings_model.embed_documents(texts)
+    Chroma.from_texts(texts, embeddings).persist()
     return len(texts)
