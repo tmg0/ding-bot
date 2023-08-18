@@ -9,4 +9,4 @@ os.environ["OPENAI_PROXY"] = conf.openai_proxy
 
 llm = OpenAI(openai_api_key=conf.openai_api_key)
 embeddings_model = OpenAIEmbeddings(openai_api_key=conf.openai_api_key)
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=150)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=150)

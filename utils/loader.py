@@ -1,7 +1,7 @@
 from langchain.document_loaders import PyPDFLoader
 from langchain.vectorstores import Chroma
 from utils.conf import load_config
-from utils.openai import embeddings_model
+from utils.openai import embeddings_model, text_splitter
 
 import glob
 
@@ -16,8 +16,7 @@ def load_pdf_docs(pattern):
         return
 
     for file_paths in file_paths:
-        loader = PyPDFLoader(file_paths)
-        d = loader.load_and_split()
-        documents = documents + d
+        docs = PyPDFLoader(file_paths).load()
+        documents = documents + text_splitter.split_documents(documents=docs)
 
     Chroma.from_documents(documents=documents, embedding=embeddings_model)
