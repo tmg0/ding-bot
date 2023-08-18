@@ -18,7 +18,6 @@ def load_pdf_docs(pattern):
     for file_paths in file_paths:
         loader = PyPDFLoader(file_paths)
         d = loader.load_and_split()
-        print(d)
         documents = documents + d
 
     Chroma.from_documents(documents=documents, embedding=embeddings_model)
